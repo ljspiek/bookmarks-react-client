@@ -38,8 +38,8 @@ class AddBookmark extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const {title, url, description, rating} = this.state;
-        const bookmark = {title, url, description, rating};
+        // const {title, url, description, rating} = this.state;
+        const bookmark = (({title, url, description, rating}) => ({title, url, description, rating}))(this.state);
         const url ='https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
         const options = {
           method: 'POST',
@@ -99,7 +99,7 @@ class AddBookmark extends Component {
             name="description"
             id="description"
             placeholder="description"
-            value={this.state.description}
+            value={this.state.url}
             onChange={e => this.descriptionChanged(e.target.value)}/>
         <label htmlFor="rating">Rating: </label>
         <input
